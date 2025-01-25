@@ -1,3 +1,4 @@
+"use client";
 import AuthForm from '@/components/AuthForm'
 import { signInSchema } from '@/lib/validation'
 import React from 'react'
