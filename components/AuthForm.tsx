@@ -25,6 +25,7 @@ import { FIELD_NAMES, FIELD_TYPES } from "@/constants";
 import Link from "next/link";
 import FileUpload from "@/components/FileUpload";
 import { toast } from "@/hooks/use-toast";
+import { useRouter } from "next/router";
 
 interface props<T extends FieldValues> {
   schema: ZodType<T>;
@@ -39,7 +40,7 @@ const AuthForm = <T extends FieldValues>({
   defaultvalue,
   onSubmit,
 }: props<T>) => {
-  
+  const router = useRouter()
   const isSignIn = type === "SIGN_IN";
 
   const form: UseFormReturn<T> = useForm({
@@ -58,7 +59,7 @@ const AuthForm = <T extends FieldValues>({
           : "You have successfully signed up",
       });
 
-
+      router.push('/')
     }
   };
 
