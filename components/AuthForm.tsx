@@ -25,7 +25,7 @@ import { FIELD_NAMES, FIELD_TYPES } from "@/constants";
 import Link from "next/link";
 import FileUpload from "@/components/FileUpload";
 import { toast } from "@/hooks/use-toast";
-import { useRouter } from "next/router";
+import { useRouter } from "next/navigation";
 
 interface props<T extends FieldValues> {
   schema: ZodType<T>;
@@ -60,6 +60,13 @@ const AuthForm = <T extends FieldValues>({
       });
 
       router.push('/')
+    }
+    else{
+      toast({
+        title: `Error ${isSignIn? "SignIn" : "Sign Up"}`,
+        description: result.error ?? "An error occord",
+        variant: 'destructive'
+      })
     }
   };
 
