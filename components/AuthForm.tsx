@@ -24,6 +24,7 @@ import { Input } from "@/components/ui/input";
 import { FIELD_NAMES, FIELD_TYPES } from "@/constants";
 import Link from "next/link";
 import FileUpload from "@/components/FileUpload";
+import { toast } from "@/hooks/use-toast";
 
 interface props<T extends FieldValues> {
   schema: ZodType<T>;
@@ -38,6 +39,7 @@ const AuthForm = <T extends FieldValues>({
   defaultvalue,
   onSubmit,
 }: props<T>) => {
+  
   const isSignIn = type === "SIGN_IN";
 
   const form: UseFormReturn<T> = useForm({
@@ -45,7 +47,20 @@ const AuthForm = <T extends FieldValues>({
     defaultValues: defaultvalue as DefaultValues<T>,
   });
 
-  const handleSubmit: SubmitHandler<T> = async (data) => {};
+  const handleSubmit: SubmitHandler<T> = async (data) => {
+    const result = await onSubmit(data);
+
+    if (result.success) {
+      toast({
+        title: "success",
+        description: isSignIn
+          ? "You have successfully signed in"
+          : "You have successfully signed up",
+      });
+
+
+    }
+  };
 
   return (
     <div className="flex flex-col gap-4">
