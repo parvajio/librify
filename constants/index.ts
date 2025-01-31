@@ -41,7 +41,7 @@ export const navigationLinks = [
   ];
   
   export const FIELD_NAMES = {
-    fullname: "Full name",
+    fullName: "Full name",
     email: "Email",
     password: "Password",
     universityId: "University ID Number",
