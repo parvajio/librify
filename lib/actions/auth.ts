@@ -18,7 +18,6 @@ export const signInWithCredentials = async (params: Pick<AuthCredentials, "email
 
         return {success : true}
     } catch (error) {
-        console.log(error, "sign in error")
         return { success: false, error: "Sign in error" }
     }
 }
@@ -51,7 +50,6 @@ export const signup = async (params: AuthCredentials) => {
 
         return { success: true }
     } catch (err) {
-        console.log(err, "sign up error")
         return { success: false, error: "signup error" }
     }
 }
