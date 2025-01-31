@@ -9,8 +9,9 @@ import {
   AvatarFallback,
   AvatarImage,
 } from "@/components/ui/avatar"
+import { Session } from "next-auth";
 
-const Header = () => {
+const Header = ({session}:{session: Session}) => {
   const pathname = usePathname();
 
   return (
