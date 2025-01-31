@@ -3,9 +3,9 @@ import Header from '@/components/Header'
 import { redirect } from 'next/navigation';
 import React, { ReactNode } from 'react'
 
-const layout = ({children }: {children : ReactNode}) => {
+const layout = async({children }: {children : ReactNode}) => {
 
-  const session  =  auth();
+  const session  = await auth();
   if(!session){
     redirect("/sign-in")
   }
