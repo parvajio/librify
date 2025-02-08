@@ -13,7 +13,7 @@ const Layout = async ({children}: {children: ReactNode}) => {
   }
 
   return <main className='flex min-h-screen w-full flex-row'>
-      <Sidebar></Sidebar>
+      <Sidebar session={session}></Sidebar>
 
       <div className='admin-container'>
 
