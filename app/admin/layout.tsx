@@ -1,6 +1,7 @@
 import { auth } from '@/auth'
 import { redirect } from 'next/navigation';
 import React, { ReactNode } from 'react'
+import '@/styles/admin.css'
 
 const Layout = async ({children}: {children: ReactNode}) => {
 
