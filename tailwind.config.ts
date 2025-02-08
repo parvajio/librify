@@ -55,7 +55,7 @@ export default {
           "5": "hsl(var(--chart-5))",
         },
         primary: {
-          DEFAULT: "#E7C9A5",
+          DEFAULT: "#2CC171",
           admin: "#25388C",
         },
         green: {
@@ -75,14 +75,14 @@ export default {
           100: "#0089F1",
         },
         light: {
-          100: "#D6E0FF",
-          200: "#EED1AC",
-          300: "#F8F8FF",
-          400: "#EDF1F1",
-          500: "#8D8D8D",
-          600: "#F9FAFB",
-          700: "#E2E8F0",
-          800: "#F8FAFC",
+          100: "#D6FFE0",  // Light green with a hint of softness
+          200: "#ACEDD1",  // Soft pastel green
+          300: "#F8FFF8",  // Almost white with a subtle green tint
+          400: "#F1F1ED",  // Neutral gray-green
+          500: "#8D9A8D",  // Medium muted green
+          600: "#FAFFF9",  // Very light greenish-white
+          700: "#E8F0E2",  // Pale green-gray
+          800: "#FAFCF8",  // Off-white with a faint green undertone
         },
         dark: {
           100: "#16191E",
