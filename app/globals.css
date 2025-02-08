@@ -257,9 +257,8 @@
 
   /* Root */
   .root-container {
-    @apply flex min-h-screen flex-1 flex-col bg-pattern bg-cover bg-top 
-    /*TODO bg-dark-100  */ 
-    px-5 sm:px-10 md:px-16;
+    @apply flex min-h-screen flex-1 flex-col bg-pattern bg-fixed bg-cover bg-top
+    /*TODO bg-dark-100  */ ;
   }
 
   /* Book Details */
