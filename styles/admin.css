@@ -170,7 +170,7 @@
   }
 
   .admin-sidebar .logo {
-    @apply flex flex-row items-center gap-2 border-b border-dashed border-primary-admin/20 pb-10 max-md:justify-center;
+    @apply flex flex-row items-center gap-2 border-b border-dashed border-primary-admin/50 pb-10 max-md:justify-center;
   }
 
   .admin-sidebar .logo h1 {
