@@ -32,11 +32,18 @@ const authenticator = async () => {
   }
 };
 
-const FileUpload = ({
-  onFileChange,
-}: {
+interface props {
+  type : "image" | "video",
+  accept: string,
+  placeholder : string,
+  folder : string,
+  variant: string,
   onFileChange: (filePath: string) => void;
-}) => {
+}
+
+const FileUpload = ({
+  type, accept, placeholder, folder, variant, onFileChange,
+}: props) => {
   const {
     env: {
       imagekit: { publicKey, urlEndpoint },
@@ -45,11 +52,19 @@ const FileUpload = ({
 
   const ref = useRef(null);
 
+  const [progress, setProgress] = useState(0);
+
+  const styles = {
+    button: variant === "dark"? "bg-dark-300" : "bg-light-600 border-gray-100 border",
+    placeholder: variant === "dark"? "text-light-100" : "text-slate-500",
+    text : variant === "dark" ? "text-light-100" : "text-dark-400",
+  }
+
   const onError = (error : any) => {
     console.error(error)
 
     toast({
-      title: `image upload failed`,
+      title: `${type} upload failed`,
       description: `Your img could not be uploaded. Please try again.`,
       variant: "destructive",
     });
@@ -60,10 +75,37 @@ const FileUpload = ({
     onFileChange(res.filePath);
 
     toast({
-      title: "Image Uploaded successfully",
+      title: `${type} Uploaded successfully`,
       description: `${res.filePath} uploaded successfully!`,
     })
   };
+
+  const onValidate = (file: File)=>{
+    if(type === "image"){
+      if(file.size > 20*1024*1024){
+        toast({
+          title: "File size too large",
+          description: " Please upload a file that is less than 20MB in size",
+          variant: "destructive"
+        })
+
+        return false
+      }
+    }
+    else if(type === "video"){
+      if(file.size> 50*1024*1024){
+        toast({
+          title: "File size too large",
+          description: " Please upload a file that is less than 50MB in size",
+          variant: "destructive"
+        })
+
+        return false
+      }
+    }
+
+    return true; 
+  }
 
   const [file, setFile] = useState<{ filePath: string } | null>(null);
 
@@ -74,11 +116,10 @@ const FileUpload = ({
       authenticator={authenticator}
     >
       <IKUpload
-        className="hidden"
         ref={ref}
         onError={onError}
         onSuccess={onSuccess}
-        fileName="test-upload.png"
+        className="hidden"
       ></IKUpload>
 
       <button
