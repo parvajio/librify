@@ -134,7 +134,7 @@ const FileUpload = ({
       ></IKUpload>
 
       <button
-        className="upload-btn"
+        className={cn("upload-btn" , styles.button)}
         onClick={(e) => {
           e.preventDefault();
 
