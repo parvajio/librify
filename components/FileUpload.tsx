@@ -152,7 +152,7 @@ const FileUpload = ({
           className="object-contain"
         />
 
-        <p className={"text-base"}>Upload file</p>
+        <p className={cn("text-base", styles.text)}>Upload file</p>
 
         {file && <p className="upload-filename">{file.filePath}</p>}
       </button>
