@@ -119,6 +119,15 @@ const FileUpload = ({
         ref={ref}
         onError={onError}
         onSuccess={onSuccess}
+        useUniqueFileName= {true}
+        validateFile={onValidate}
+        onUploadStart={()=>{
+          setProgress(0)
+        }}
+        onUploadProgress={({loaded, total})=>{
+          const parcent = Math.round((loaded/total)*100);
+          setProgress(parcent)
+        }}
         className="hidden"
       ></IKUpload>
 
