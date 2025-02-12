@@ -128,6 +128,8 @@ const FileUpload = ({
           const parcent = Math.round((loaded/total)*100);
           setProgress(parcent)
         }}
+        folder={folder}
+        accept={accept}
         className="hidden"
       ></IKUpload>
 
