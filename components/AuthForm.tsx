@@ -40,7 +40,7 @@ const AuthForm = <T extends FieldValues>({
   defaultvalue,
   onSubmit,
 }: props<T>) => {
-  const router = useRouter()
+  const router = useRouter();
   const isSignIn = type === "SIGN_IN";
 
   const form: UseFormReturn<T> = useForm({
@@ -59,14 +59,13 @@ const AuthForm = <T extends FieldValues>({
           : "You have successfully signed up",
       });
 
-      router.push('/')
-    }
-    else{
+      router.push("/");
+    } else {
       toast({
-        title: `Error ${isSignIn? "SignIn" : "Sign Up"}`,
+        title: `Error ${isSignIn ? "SignIn" : "Sign Up"}`,
         description: result.error ?? "An error occord",
-        variant: 'destructive'
-      })
+        variant: "destructive",
+      });
     }
   };
 
@@ -94,7 +93,14 @@ const AuthForm = <T extends FieldValues>({
                   </FormLabel>
                   <FormControl>
                     {field.name === "universityCard" ? (
-                      <FileUpload onFileChange={field.onChange}></FileUpload>
+                      <FileUpload
+                        type="image"
+                        accept="image/*"
+                        placeholder="upload your id"
+                        folder="ids"
+                        variant="dark"
+                        onFileChange={field.onChange}
+                      ></FileUpload>
                     ) : (
                       <Input
                         required
