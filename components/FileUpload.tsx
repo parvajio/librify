@@ -6,6 +6,7 @@ import { cn } from "@/lib/utils";
 import {
   IKImage,
   IKUpload,
+  IKVideo,
   ImageKitContext,
   ImageKitProvider,
 } from "imagekitio-next";
@@ -166,12 +167,21 @@ const FileUpload = ({
       )}
 
       {file && (
-        <IKImage
+        (
+          type=== "image"? (<IKImage
           alt={file.filePath}
           path={file.filePath}
           width={500}
           height={500}
-        ></IKImage>
+        ></IKImage>):(
+          type === "video" ? (<IKVideo
+          path={file.filePath}
+          controls={true}
+          className="h-96 w-full rounded-xl"
+          ></IKVideo>): null
+        )
+      )
+        
       )}
     </ImageKitProvider>
   );
