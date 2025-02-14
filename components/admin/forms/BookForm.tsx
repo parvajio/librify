@@ -204,7 +204,17 @@ const BookForm = ({ type, ...book }: props) => {
           render={({ field }) => (
             <FormItem>
               <FormLabel className="capitalize">Book Trailer</FormLabel>
-              <FormControl>{/* File Uploade  */}</FormControl>
+              <FormControl>
+                {/* File Uploade  */}
+                <FileUpload
+                  type="video"
+                  accept="video/*"
+                  placeholder="upload a book trailer"
+                  variant="dark"
+                  folder="books/trailer"
+                  onFileChange={field.onChange}
+                ></FileUpload>
+                </FormControl>
               <FormMessage />
             </FormItem>
           )}
