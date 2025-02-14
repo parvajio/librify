@@ -39,11 +39,12 @@ interface props {
   placeholder : string,
   folder : string,
   variant: string,
-  onFileChange: (filePath: string) => void;
+  onFileChange: (filePath: string) => void,
+  value?: string
 }
 
 const FileUpload = ({
-  type, accept, placeholder, folder, variant, onFileChange,
+  type, accept, placeholder, folder, variant, onFileChange, value
 }: props) => {
   const {
     env: {
@@ -108,7 +109,7 @@ const FileUpload = ({
     return true; 
   }
 
-  const [file, setFile] = useState<{ filePath: string } | null>(null);
+  const [file, setFile] = useState<{ filePath: string |null}>({filePath: value ?? null});
 
   return (
     <ImageKitProvider
