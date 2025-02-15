@@ -52,15 +52,6 @@ const BookCover = ({
           loading="lazy"
           lqip={{active: true}}
         ></IKImage>
-        {/* <IKImage
-          path={coverImage}
-          urlEndpoint={config.env.imagekit.urlEndpoint}
-          alt="Book cover"
-          fill
-          className="rounded-sm object-fill"
-          loading="lazy"
-          lqip={{ active: true }}
-        /> */}
       </div>
     </div>
   );
