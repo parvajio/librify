@@ -28,7 +28,7 @@ const page = async({params}: {params: Promise<{id: string}>}) => {
             <div className='flex-[1.5]'>
                 <section className='flex flex-col gap-7'>
                     <h3>Video</h3>
-                    <BookVideo videoUrl={bookDetails.videoUrl}></BookVideo>
+                    {/* <BookVideo videoUrl={bookDetails.videoUrl}></BookVideo> */}
                 </section>
                 
                 {/* <summary></summary> */}
