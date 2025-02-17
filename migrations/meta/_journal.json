@@ -15,6 +15,13 @@
       "when": 1739606937756,
       "tag": "0001_flaky_hellion",
       "breakpoints": true
+    },
+    {
+      "idx": 2,
+      "version": "7",
+      "when": 1739710561252,
+      "tag": "0002_friendly_doctor_spectrum",
+      "breakpoints": true
     }
   ]
 }
