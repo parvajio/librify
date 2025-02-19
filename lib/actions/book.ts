@@ -20,7 +20,7 @@ export const borrowBook = async (params: BorrowBookParams) => {
 
         const dueDate = dayjs().add(7, 'day').toDate().toDateString();
 
-        const record = db.insert(borrowRecords).values({
+        const record = await db.insert(borrowRecords).values({
             userId, bookId, dueDate, status: "BORROWED"
         }); //table -> borrowRecords
 
