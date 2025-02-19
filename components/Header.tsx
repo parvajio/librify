@@ -1,20 +1,18 @@
-import Image from "next/image";
 import Link from "next/link";
 import React from "react";
 import { signOut } from "@/auth";
 import { Button } from "./ui/button";
+import { SiWikibooks } from "react-icons/si";
 
 const Header = () => {
 
   return (
     <header className="my-10 flex justify-between gap-5">
       <Link href={"/"}>
-        <Image
-          src={"/icons/logo.svg"}
-          alt="logo"
-          width={40}
-          height={40}
-        ></Image>
+      <div className="text-green-600 text-4xl flex items-center justify-center">
+      <SiWikibooks />
+      </div>
+      
       </Link>
 
       <ul className="flex flex-row items-center gap-8">
