@@ -15,7 +15,7 @@ import { useRef, useState } from "react";
 
 const authenticator = async () => {
   try {
-    const res = await fetch(`${config.env.apiEndpoint}/api/auth/imagekit`);
+    const res = await fetch(`${config.env.apiEndpoint}/api/imagekit`);
 
     if (!res.ok) {
       const errorText = await res.text();
