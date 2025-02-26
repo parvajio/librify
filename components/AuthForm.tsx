@@ -71,7 +71,7 @@ const AuthForm = <T extends FieldValues>({
 
   return (
     <div className="flex flex-col gap-4">
-      <h1>{isSignIn ? "Welcome to BookWise!" : "Create an library account"}</h1>
+      <h1>{isSignIn ? "Welcome to Librify!" : "Create an library account"}</h1>
 
       <p className="text-light-100">
         {isSignIn
@@ -124,7 +124,7 @@ const AuthForm = <T extends FieldValues>({
       </Form>
 
       <p className="text-center text-base font-medium">
-        {isSignIn ? "New to BookWise? " : "Already have an account? "}
+        {isSignIn ? "New to Librify? " : "Already have an account? "}
 
         <Link
           href={isSignIn ? "/sign-up" : "/sign-in"}

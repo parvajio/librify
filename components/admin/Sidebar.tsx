@@ -25,7 +25,7 @@ const Sidebar = ({ session }: { session: Session }) => {
             height={37}
             width={37}
           ></Image>
-          <h1>BookWise</h1>
+          <h1>Librify</h1>
         </div>
 
         {/* sidebar links */}
