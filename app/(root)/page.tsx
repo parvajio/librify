@@ -13,7 +13,7 @@ const Home = async() => {
 
   return (
     <>
-      <BookOverview {...latestBooks[0]} userId={session?.user?.id as string}></BookOverview>
+      <BookOverview {...latestBooks[3]} userId={session?.user?.id as string}></BookOverview>
       <BookList
         title="Latest Books"
         books={latestBooks.slice(1)}

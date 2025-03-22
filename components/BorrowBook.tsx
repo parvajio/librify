@@ -25,12 +25,18 @@ const BorrowBook = ({
   const [borrowing, setBorrowing] = useState(false);
 
   const handleBorrow = async () => {
+
+    if(!userId){
+      router.push("/sign-in");
+    }
+
     if (!isEligible) {
       toast({
         title: "Error",
         description: message,
         variant: "destructive",
       });
+      return;
     }
 
     setBorrowing(true);

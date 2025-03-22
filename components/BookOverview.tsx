@@ -1,17 +1,17 @@
 import Image from "next/image";
 import React from "react";
-import { Button } from "./ui/button";
+// import { Button } from "./ui/button";
 import BookCover from "./BookCover";
 import BorrowBook from "./BorrowBook";
 import { db } from "@/database/drizzle";
 import { users } from "@/database/schema";
 import { eq } from "drizzle-orm";
 
-interface Props extends Book{
+interface Props extends Book {
   userId: string;
 }
 
-const BookOverview = async({
+const BookOverview = async ({
   id,
   title,
   author,
@@ -22,17 +22,32 @@ const BookOverview = async({
   description,
   coverColor,
   coverUrl,
-  userId
+  userId,
 }: Props) => {
+  const [user] = await db
+    .select()
+    .from(users)
+    .where(eq(users.id, userId))
+    .limit(1);
 
-  const [user] = await db.select().from(users).where(eq(users.id, userId)).limit(1);
-  
-  // if(!user) return null;
+  // if (!user) {
+  //   return (
+  //     <section className="book-overview">
+  //       <div className="flex flex-1 flex-col gap-5">
+  //         <h1>{title}</h1>
+  //         <p>User not found</p>
+  //       </div>
+  //     </section>
+  //   );
+  // }
 
-  const borrowingEligibility ={
-    isEligible : availableCopies > 0 && user.status === "APPROVED",
-    message: availableCopies <= 0 ? "Book is not available" : "You are not eligable to borrow book."
-  }
+  const borrowingEligibility = {
+    isEligible: availableCopies > 0 && user?.status === "APPROVED",
+    message:
+      availableCopies <= 0
+        ? "Book is not available"
+        : "You are not eligable to borrow book.",
+  };
 
   return (
     <section className="book-overview">
@@ -64,7 +79,11 @@ const BookOverview = async({
         </div>
         <p className="book-description">{description}</p>
 
-        {user && <BorrowBook bookId={id} userId={userId} borrowingEligibility={borrowingEligibility}></BorrowBook>}
+          <BorrowBook
+            bookId={id}
+            userId={userId}
+            borrowingEligibility={borrowingEligibility}
+          ></BorrowBook>
       </div>
 
       <div className="relative flex flex-1 justify-center">
