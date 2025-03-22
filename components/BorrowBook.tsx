@@ -28,6 +28,12 @@ const BorrowBook = ({
 
     if(!userId){
       router.push("/sign-in");
+      toast({
+        title: "Error",
+        description: "You are not user. Please Sign in First.",
+        variant: "destructive",
+      });
+      return;
     }
 
     if (!isEligible) {
