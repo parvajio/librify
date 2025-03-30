@@ -7,7 +7,6 @@ import {
   IKImage,
   IKUpload,
   IKVideo,
-  ImageKitContext,
   ImageKitProvider,
 } from "imagekitio-next";
 import Image from "next/image";

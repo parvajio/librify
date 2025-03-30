@@ -1,10 +1,16 @@
-import { signOut } from "@/auth";
+import { auth, signOut } from "@/auth";
 import BookList from "@/components/BookList";
 import { Button } from "@/components/ui/button";
 import { sampleBooks } from "@/constants";
+import { redirect } from "next/navigation";
 import React from "react";
 
-const page = () => {
+const page = async () => {
+  const session = await auth()
+
+  if(!session){
+    redirect("/sign-in")
+  }
   return (
     <>
       <form
