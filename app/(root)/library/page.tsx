@@ -34,10 +34,10 @@ const page = async ({ searchParams }: { searchParams: { page?: string } }) => {
       ></BookList>
 
       {/* pagination */}
-      <div className="flex gap-2">
+      <div className="w-full flex justify-center gap-2 mt-10">
         {
           Array.from({length: totalPages}, (v,i)=>(
-            <div key={i}>
+            <div key={i} className={cn(currentPage-1 == i ? "bg-primary text-black p-2 rounded-md": "border border-primary p-2 rounded-md")}>
               <a href={`?page=${i+1}`}>
                 {i+1}
               </a>
