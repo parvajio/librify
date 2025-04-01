@@ -25,3 +25,7 @@ export const bookSchema = z.object({
     videoUrl: z.string().nonempty(),
     summary: z.string().trim().min(10)
 })
+
+export const searchSchema = z.object({
+    search : z.string()
+})

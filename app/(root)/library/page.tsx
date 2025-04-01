@@ -1,5 +1,5 @@
 import BookList from "@/components/BookList";
-import SearchHero from "@/components/searchHero";
+import SearchHero from "@/components/SearchHero";
 import { db } from "@/database/drizzle";
 import { books } from "@/database/schema";
 import { cn } from "@/lib/utils";
