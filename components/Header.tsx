@@ -26,6 +26,30 @@ const Header = ({ session }: { session: Session }) => {
       </Link>
 
       <ul className="flex flex-row items-center gap-8">
+      <li>
+              <Link
+                href={"/"}
+                className={cn(
+                  "text-base cursor-pointer capitalize",
+                  pathname === "/" ? "bg-primary text-primary-foreground shadow hover:bg-primary/90 p-2 px-4 rounded-lg" : "text-light-100"
+                )}
+              >
+                Home
+              </Link>
+            </li>
+        <li>
+          <Link
+            href={"/library"}
+            className={cn(
+              "text-base cursor-pointer capitalize",
+              pathname === "/library"
+                ? "bg-primary text-primary-foreground shadow hover:bg-primary/90 p-2 px-4 rounded-lg"
+                : "text-light-100"
+            )}
+          >
+            Library
+          </Link>
+        </li>
         {session ? (
           <li>
             <Link href={"/my-profile"}>
@@ -38,17 +62,6 @@ const Header = ({ session }: { session: Session }) => {
           </li>
         ) : (
           <>
-            <li>
-              <Link
-                href={"/library"}
-                className={cn(
-                  "text-base cursor-pointer capitalize",
-                  pathname === "/library" ? "bg-primary text-primary-foreground shadow hover:bg-primary/90 p-2 px-4 rounded-lg" : "text-light-100"
-                )}
-              >
-                Library
-              </Link>
-            </li>
             <li>
               <Button onClick={handleSignIn}>Sign In</Button>
             </li>
