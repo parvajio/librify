@@ -1,4 +1,5 @@
 import BookList from "@/components/BookList";
+import SearchHero from "@/components/searchHero";
 import { db } from "@/database/drizzle";
 import { books } from "@/database/schema";
 import { cn } from "@/lib/utils";
@@ -26,7 +27,7 @@ const page = async ({ searchParams }: { searchParams: { page?: string } }) => {
 
   return (
     <section className="text-white">
-      This is the library page
+      <SearchHero></SearchHero>
       <BookList
         title="Books"
         books={allBooks}
@@ -35,15 +36,18 @@ const page = async ({ searchParams }: { searchParams: { page?: string } }) => {
 
       {/* pagination */}
       <div className="w-full flex justify-center gap-2 mt-10">
-        {
-          Array.from({length: totalPages}, (v,i)=>(
-            <div key={i} className={cn(currentPage-1 == i ? "bg-primary text-black p-2 rounded-md": "border border-primary p-2 rounded-md")}>
-              <a href={`?page=${i+1}`}>
-                {i+1}
-              </a>
-            </div>
-          ))
-        }
+        {Array.from({ length: totalPages }, (v, i) => (
+          <div
+            key={i}
+            className={cn(
+              currentPage - 1 == i
+                ? "bg-primary text-black p-2 rounded-md"
+                : "border border-primary p-2 rounded-md"
+            )}
+          >
+            <a href={`?page=${i + 1}`}>{i + 1}</a>
+          </div>
+        ))}
       </div>
     </section>
   );
