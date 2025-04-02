@@ -8,7 +8,10 @@ const SearchHero = () => {
       <p className='text-4xl font-bold'>Explore and Search for</p>
       <p className='text-4xl font-bold'>Any Book In Our Library.</p>
       {/* search  */}
+      <div className='w-full max-w-lg mt-5'>
+
       <SearchForm />
+      </div>
     </div>
   )
 }

@@ -15,6 +15,7 @@ import { Button } from "./ui/button";
 import { useForm } from "react-hook-form";
 import { useSearchParams } from "next/navigation";
 import { useRouter } from "next/navigation";
+import { SearchIcon } from "lucide-react";
 
 const SearchForm = () => {
   const router = useRouter();
@@ -37,15 +38,23 @@ const SearchForm = () => {
 
   return (
     <Form {...form}>
-      <form onSubmit={form.handleSubmit(onSubmit)}>
+      <form onSubmit={form.handleSubmit(onSubmit)} className="w-full max-w-2xl">
         <FormField
           control={form.control}
           name="search"
           render={({ field }) => (
             <FormItem>
               <FormControl>
-                <Input placeholder="Search books by title, author, or genre..." {...field} className="form-input"/>
-                <Button type="submit" className="form-btn">Search</Button>
+                <div className="flex">
+                  <Input 
+                    placeholder="Search books by title, author, or genre..." 
+                    {...field} 
+                    className="form-input rounded-r-none"
+                  />
+                  <Button type="submit" className="min-h-14 rounded-l-none">
+                    <SearchIcon></SearchIcon>
+                  </Button>
+                </div>
               </FormControl>
               <FormMessage />
             </FormItem>
