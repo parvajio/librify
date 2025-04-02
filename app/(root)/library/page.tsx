@@ -3,7 +3,7 @@ import SearchHero from "@/components/SearchHero";
 import { db } from "@/database/drizzle";
 import { books } from "@/database/schema";
 import { cn } from "@/lib/utils";
-import { like, or, sql } from "drizzle-orm";
+import { ilike, or, sql } from "drizzle-orm";
 import React from "react";
 
 const page = async ({
@@ -23,9 +23,9 @@ const page = async ({
     .where(
       searchQuery
         ? or(
-            like(books.title, `%${searchQuery}%`),
-            like(books.author, `%${searchQuery}%`),
-            like(books.genre, `%${searchQuery}%`)
+            ilike(books.title, `%${searchQuery}%`),
+            ilike(books.author, `%${searchQuery}%`),
+            ilike(books.genre, `%${searchQuery}%`)
           )
         : undefined
     )
@@ -38,9 +38,9 @@ const page = async ({
     .where(
       searchQuery
         ? or(
-            like(books.title, `%${searchQuery}%`),
-            like(books.author, `%${searchQuery}%`),
-            like(books.genre, `%${searchQuery}%`)
+            ilike(books.title, `%${searchQuery}%`),
+            ilike(books.author, `%${searchQuery}%`),
+            ilike(books.genre, `%${searchQuery}%`)
           )
         : undefined
     );
@@ -69,7 +69,7 @@ const page = async ({
             )}
           >
             <a
-              href={`?page=${i + 1}${searchQuery ? `$search=${searchQuery}` : ""}`}
+              href={`?page=${i + 1}${searchQuery ? `&search=${searchQuery}` : ""}`}
             >
               {i + 1}
             </a>
