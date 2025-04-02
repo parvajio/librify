@@ -3,24 +3,47 @@ import SearchHero from "@/components/SearchHero";
 import { db } from "@/database/drizzle";
 import { books } from "@/database/schema";
 import { cn } from "@/lib/utils";
-import { sql } from "drizzle-orm";
+import { like, or, sql } from "drizzle-orm";
 import React from "react";
 
-const page = async ({ searchParams }: { searchParams: { page?: string } }) => {
+const page = async ({
+  searchParams,
+}: {
+  searchParams: { page?: string; search?: string };
+}) => {
   const PAGE_SIZE = 15;
   const params = await searchParams;
   const currentPage = params.page ? parseInt(params.page, 10) : 1;
   const offset = (currentPage - 1) * PAGE_SIZE;
+  const searchQuery = params.search || "";
 
   const allBooks = await db
     .select()
     .from(books)
+    .where(
+      searchQuery
+        ? or(
+            like(books.title, `%${searchQuery}%`),
+            like(books.author, `%${searchQuery}%`),
+            like(books.genre, `%${searchQuery}%`)
+          )
+        : undefined
+    )
     .limit(PAGE_SIZE)
     .offset(offset);
 
   const totalBook = await db
     .select({ count: sql<number>`COUNT(*)` })
-    .from(books);
+    .from(books)
+    .where(
+      searchQuery
+        ? or(
+            like(books.title, `%${searchQuery}%`),
+            like(books.author, `%${searchQuery}%`),
+            like(books.genre, `%${searchQuery}%`)
+          )
+        : undefined
+    );
   // console.log(totalBook);
   const totalPages = Math.ceil(Number(totalBook[0].count) / PAGE_SIZE);
   // console.log(totalPages);
@@ -29,7 +52,7 @@ const page = async ({ searchParams }: { searchParams: { page?: string } }) => {
     <section className="text-white">
       <SearchHero></SearchHero>
       <BookList
-        title="Books"
+        title={searchQuery ? `Search result for "${searchQuery}"` : "Books"}
         books={allBooks}
         containerClassName="mt-28"
       ></BookList>
@@ -45,7 +68,11 @@ const page = async ({ searchParams }: { searchParams: { page?: string } }) => {
                 : "border border-primary p-2 rounded-md"
             )}
           >
-            <a href={`?page=${i + 1}`}>{i + 1}</a>
+            <a
+              href={`?page=${i + 1}${searchQuery ? `$search=${searchQuery}` : ""}`}
+            >
+              {i + 1}
+            </a>
           </div>
         ))}
       </div>
