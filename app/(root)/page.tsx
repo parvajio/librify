@@ -1,6 +1,7 @@
 import { auth } from "@/auth";
 import BookList from "@/components/BookList";
 import BookOverview from "@/components/BookOverview";
+import OurBlogs from "@/components/OurBlogs";
 import { db } from "@/database/drizzle";
 import { books, users } from "@/database/schema";
 import { desc } from "drizzle-orm";
@@ -19,6 +20,8 @@ const Home = async() => {
         books={latestBooks.slice(1)}
         containerClassName="mt-28"
       ></BookList>
+      <p>this is our blog section</p>
+      <OurBlogs></OurBlogs>
     </>
   );
 };
