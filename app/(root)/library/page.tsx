@@ -11,7 +11,7 @@ const page = async ({
 }: {
   searchParams: { page?: string; search?: string };
 }) => {
-  const PAGE_SIZE = 15;
+  const PAGE_SIZE = 12;
   const params = await searchParams;
   const currentPage = params.page ? parseInt(params.page, 10) : 1;
   const offset = (currentPage - 1) * PAGE_SIZE;
