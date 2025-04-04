@@ -51,8 +51,8 @@ const BookOverview = async ({
 
   return (
     <section className="book-overview">
-      <div className="flex flex-1 flex-col gap-5">
-        <h1 >{title}</h1>
+      <div className="flex flex-1 flex-col gap-5 animate-fadeUp">
+        <h1>{title}</h1>
         <div className="book-info">
           <p>
             By <span className="font-semibold text-light-200">{author}</span>
@@ -79,11 +79,11 @@ const BookOverview = async ({
         </div>
         <p className="book-description">{description}</p>
 
-          <BorrowBook
-            bookId={id}
-            userId={userId}
-            borrowingEligibility={borrowingEligibility}
-          ></BorrowBook>
+        <BorrowBook
+          bookId={id}
+          userId={userId}
+          borrowingEligibility={borrowingEligibility}
+        ></BorrowBook>
       </div>
 
       <div className="relative flex flex-1 justify-center">
