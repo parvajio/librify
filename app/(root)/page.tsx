@@ -1,7 +1,6 @@
 import { auth } from "@/auth";
 import BookList from "@/components/BookList";
 import BookOverview from "@/components/BookOverview";
-import Footer from "@/components/Footer";
 import OurBlogs from "@/components/OurBlogs";
 import { db } from "@/database/drizzle";
 import { books, users } from "@/database/schema";
@@ -28,7 +27,6 @@ const Home = async () => {
         containerClassName="mt-28"
       ></BookList>
       <OurBlogs></OurBlogs>
-      <Footer></Footer>
     </>
   );
 };
